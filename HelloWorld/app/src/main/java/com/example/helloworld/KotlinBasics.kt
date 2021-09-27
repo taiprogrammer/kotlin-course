@@ -8,6 +8,7 @@ fun main() {
     var city:String = "Washington"
     // new data
     city = "São Paulo"
+    print("Hello $myName! You live in $city")
     // TODO: add new functionality
 
     /*
@@ -93,9 +94,9 @@ fun main() {
     val isNotEqual = 5!=5
 
     /* String interpolation */
-    println("is5greater3 ${5>3}")
-    println("is5lowerEqual3 ${5<=3}")
-    println("is5greaterEqual3 ${5>=3}")
+    //println("is5greater3 ${5>3}")
+    //println("is5lowerEqual3 ${5<=3}")
+    //println("is5greaterEqual3 ${5>=3}")
 
     /*
         Assignments operators:
@@ -126,7 +127,9 @@ fun main() {
     var heightPerson1 = 170
     var heightPerson2 = 189
 
-    if (heightPerson1 > heightPerson2) {
+    /* Using if - else if - else */
+
+    /*if (heightPerson1 > heightPerson2) {
         println("use raw force")
     }
     else if (heightPerson1 == heightPerson2) {
@@ -134,16 +137,77 @@ fun main() {
     }
     else {
         println("use technique")
+    } */
+
+    /* Replacing if - else if - else to when */
+
+    when {
+        heightPerson1 > heightPerson2 -> {
+            println("use raw force")
+        }
+        heightPerson1 == heightPerson2 -> {
+            println("use your power technique 1337")
+        }
+        else -> {
+            println("use technique")
+        }
     }
 
     val age = 17
 
-    if (age >= 21) {
-        println("Now you can drink in the US")
-    }
-    else {
-        println("You can't drink in the US yet")
+//    if (age >= 21) {
+//        println("Now you can drink in the US")
+//    }
+//    else {
+//        println("You can't drink in the US yet")
+//    }
+
+    when {
+        age >= 21 -> {
+            println("Now you can drink in the US")
+        }
+        age >= 18 -> {
+            println("You may vote now")
+        }
+        age >= 16 -> {
+            println("You may drive now")
+        }
+        else -> {
+            println("You're too young")
+        }
     }
 
-    print("Hello $myName! You live in $city")
+    var season = 3
+
+    when(season) {
+        1 -> println("Spring")
+        2 -> println("Summer")
+        3 -> {
+            println("Fall")
+            println("Autumn")
+        }
+        4 -> println("Winter")
+        else -> println("Invalid season")
+    }
+
+    var month = 3
+
+    when(month) {
+        in 3..5 -> println("Spring")
+        in 6..8 -> println("Summer")
+        in 9..11 -> println("Fall")
+//        in 12 downTo 2 -> println("Winter")
+        12, 1, 2 -> println("Winter")
+
+        else -> println("Invalid month")
+    }
+
+    var x : Any = 13.37
+
+    when (x) {
+        is Int -> println("$x is an Integer")
+        is String -> println("$x is a String")
+        is Double -> println("$x is a Double")
+        else -> println("Neither one neither nothing!")
+    }
 }

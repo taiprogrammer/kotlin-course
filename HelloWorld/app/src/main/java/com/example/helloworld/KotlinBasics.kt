@@ -210,4 +210,33 @@ fun main() {
         is Double -> println("$x is a Double")
         else -> println("Neither one neither nothing!")
     }
+
+    /* While loop executes a block of code repeatedly as long as a given condition
+    * is true */
+    var y = 1
+    while (y <= 10) {
+        //code to be executed
+        println("$y you are amazing")
+        y++
+    }
+
+    var z = 100
+    while (z >= 0) {
+        println("$z")
+        z--
+    }
+    println("Over")
+
+    var a = 100
+    while (a >= 0) {
+        println(a)
+        a -= 2
+    }
+    println("Over again")
+
+    var b = 1
+    do {
+        println(b)
+        b++
+    } while (b < 15)
 }

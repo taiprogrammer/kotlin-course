@@ -273,5 +273,45 @@ fun main() {
     for (number in 10 downTo 1 step 2) { //same as - (number in 10.downTp(1).step(2))
         println(number)
     }
+    println("_________________________")
+    var number = 0
+    while (number <= 10000) {
+        println(number)
+        number++
+        if (number == 9001) {
+            println("It's over 9000!!!")
+        }
+    }
+    println("_________________________")
+    for (num in 10000 downTo 0) {
+        println(num)
+        if (num == 9001) {
+            println("It's over 9000!!!")
+        }
+    }
+    /*
+    * for(num in 1..10000) {
+            if(num == 9001)
+        print("IT'S OVER 9000!!!")
+    }
+    * */
+    println("_________________________")
 
+    var humidityLevel = 80
+    var humidity = "humid"
+    while (humidity == "humid") {
+        humidityLevel -= 5
+        println("humidity decreased")
+        if (humidityLevel < 60) {
+            humidity = "comfy"
+            println("it's $humidity now")
+        }
+    }
+    println("_________________________")
+
+    var ex = 0
+    for (y in 0..9) {
+        ex += y
+    }
+    println(y)
 }

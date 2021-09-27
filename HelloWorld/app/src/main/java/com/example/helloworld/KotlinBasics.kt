@@ -219,6 +219,7 @@ fun main() {
         println("$y you are amazing")
         y++
     }
+    println("_________________________")
 
     var z = 100
     while (z >= 0) {
@@ -226,6 +227,7 @@ fun main() {
         z--
     }
     println("Over")
+    println("_________________________")
 
     var a = 100
     while (a >= 0) {
@@ -233,10 +235,43 @@ fun main() {
         a -= 2
     }
     println("Over again")
+    println("_________________________")
 
     var b = 1
     do {
         println(b)
         b++
     } while (b < 15)
+    println("_________________________")
+
+    var feltTemperature = "cold"
+    var roomTemperature = 10
+    while (feltTemperature == "cold") {
+        roomTemperature++
+        if (roomTemperature >= 20) {
+            feltTemperature = "comfy"
+            println("it's $feltTemperature now")
+        }
+    }
+    println("Over temperature")
+    println("_________________________")
+    /* For Loops */
+    for (num in 1..10) {
+        println(num)
+    }
+    println("_________________________")
+    for (num in 1 until 10) {
+        print("$num \n")
+    }
+    println("_________________________")
+
+    for (number in 10 downTo 1) {
+        println(number)
+    }
+    println("_________________________")
+
+    for (number in 10 downTo 1 step 2) { //same as - (number in 10.downTp(1).step(2))
+        println(number)
+    }
+
 }

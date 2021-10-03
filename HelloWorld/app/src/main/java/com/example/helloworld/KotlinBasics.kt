@@ -337,6 +337,18 @@ fun main() {
         null
     }
      */
+
     println("_________________________")
-    val route = nullableTwo ?: "Guest"
+    /* ?: Elvis Operator */
+    val route = nullableTwo?.lowercase() ?: "Guest"
+    println("route: $route")
+
+    println("_________________________")
+    println("length: ${nullableTwo!!.length}")
+    println("upper case: ${nullableTwo.uppercase()}")
+    println("upper case: ${nullableTwo.lowercase()}")
+
+    println("_________________________")
+    //You can perform a chain safe calls:
+    //val wifeAge: String? = user?.life?.age ?: 0
 }

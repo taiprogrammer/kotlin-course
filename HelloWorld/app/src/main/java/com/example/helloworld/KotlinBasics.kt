@@ -1,5 +1,7 @@
 package com.example.helloworld
 
+import androidx.annotation.Nullable
+
 fun main() {
     // immutable variable
     val myName:String = "Taiza"
@@ -314,4 +316,27 @@ fun main() {
         ex += y
     }
     println(y)
+    println("_________________________")
+    var name:String = "Vinicius"
+    //name = null //COMPILATION -> Error
+    var nullable:String? = "will be right"
+    nullable = null
+    var nullableTwo : String? = "fuck"
+    //nullableTwo = null
+
+    nullableTwo?.length
+    println(nullableTwo?.length)
+
+    nullableTwo?.let { println(it.length) }
+
+    /*
+    if (nullableTwo != null) {
+        nullableTwo.length
+    }
+    else {
+        null
+    }
+     */
+    println("_________________________")
+    val route = nullableTwo ?: "Guest"
 }

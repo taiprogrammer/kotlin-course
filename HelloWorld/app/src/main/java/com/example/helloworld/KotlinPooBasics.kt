@@ -13,6 +13,11 @@ fun main() {
 
     /* Here I can call myFunction2() and reassign a value for the parameter */
     myFunction2(5)
+
+    /* Late init */
+    var myCar = Car()
+    myCar.owner = "Taiza"
+    println(myCar.owner + myCar.myBrand)
 }
 
 fun myFunction2(a : Int) {
@@ -35,6 +40,7 @@ class Person constructor(firstName : String, lastName : String) {
     var age : Int? = null
     var hobby : String? = "watch Netflix"
     var name: String? = null
+
     /* Initializer block */
     init {
         this.name = firstName
@@ -49,8 +55,34 @@ class Person constructor(firstName : String, lastName : String) {
     }
 
     /* Methods */
-
     fun stateHobby() {
         println("$name\'s hobby is: $hobby")
+    }
+}
+
+class Car() {
+    var owner : String
+
+    /* Custom getter */
+    get() {
+        return field.uppercase()
+    }
+    val myBrand : String = "BMW"
+
+    /* Custom getter */
+    get() {
+        return field.lowercase()
+    }
+
+    var maxSpeed : Int = 250
+    get() = field /* <- default getter from Kotlin */
+
+    /* default setter from Kotlin */
+    set(value) {
+        field = value
+    }
+
+    init {
+        this.owner = "Vinicius"
     }
 }

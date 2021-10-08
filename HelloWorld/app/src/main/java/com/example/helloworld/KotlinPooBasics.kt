@@ -19,6 +19,25 @@ fun main() {
     var myCar = Car()
     myCar.owner = "Taiza"
     println(myCar.owner + myCar.myBrand)
+
+    /* Data class object */
+
+    val user1 = User(20, "Gisele")
+    val userId = user1.id
+    val userName = user1.name
+    println("User created on Facebook, name: $userName with an id: $userId")
+
+    val user2 = User(19, "Gabriel")
+    println(user1 == user2)
+
+    val updateUser = user1.copy(name = "Taiza Marques")
+
+    println(updateUser.component1())
+    println(updateUser.component2())
+
+    /*
+        val (id, name) = updateUser
+    */
 }
 
 fun myFunction2(a : Int) {
@@ -101,4 +120,8 @@ class Car() {
         this.owner = "Vinicius"
     }
 }
+
+/* Creating a data class */
+/* Data class already have a toString() method */
+data class User(val id : Long, val name : String)
 

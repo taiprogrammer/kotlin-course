@@ -1,5 +1,6 @@
 package com.example.helloworld
 
+
 fun main() {
     val people = Person("Vinicius", "Rodrigues")
     people.hobby = "watch films"
@@ -75,14 +76,29 @@ class Car() {
     }
 
     var maxSpeed : Int = 250
-    get() = field /* <- default getter from Kotlin */
+    /* get() = field */ /* <- default getter from Kotlin */
 
     /* default setter from Kotlin */
-    set(value) {
+        /* set(value) {
         field = value
-    }
+    } */
+
+        /*
+    set(value) {
+        field = if (value < 2) {
+            value
+        } else {
+            value
+        }
+    } */
+
+    var myModel : String = "M5"
+    private set
+
 
     init {
+        this.myModel = "M3"
         this.owner = "Vinicius"
     }
 }
+

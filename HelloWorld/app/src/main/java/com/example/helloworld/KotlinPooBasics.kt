@@ -51,6 +51,16 @@ fun main() {
     myElectricMotorcycle.drive()
     //Polymorphism
     myElectricMotorcycle.drive(500.0)
+
+    val elephant = Elephant("Spyke", "India", 5400.0, 25.0)
+    val human = Human("Taiza", "Brasil", 42.0, 10.0)
+
+    elephant.run()
+    elephant.breath()
+    elephant.displayDetails()
+    human.run()
+    human.breath()
+    human.displayDetails()
 }
 
 fun myFunction2(a : Int) {
@@ -203,6 +213,45 @@ interface Drivable {
     fun drive(): String
     fun brake() {
         println("The drivable is breaking")
+    }
+}
+
+    /* Abstract Class */
+abstract class Mammal(private val name : String, private val origin : String,
+    private val weight : Double) {
+
+        /* Abstract Property (Must be overridden by subclasses) */
+    abstract var maxSpeed : Double
+
+    /* Abstract Methods (Must be overridden by subclasses) */
+    abstract fun run()
+    abstract fun breath()
+
+    /* Concrete (Nun Abstract) method */
+    fun displayDetails() {
+        println("Name: $name, Origin: $origin, Weight: $weight, Max Speed: $maxSpeed")
+    }
+}
+
+class Human(name: String, origin: String, weight: Double,
+            override var maxSpeed: Double):Mammal(name, origin, weight) {
+    override fun breath() {
+        println("Breath with nose, mouth and lungs")
+        }
+
+    override fun run() {
+        println("Run with two legs")
+        }
+}
+
+class Elephant(name: String, origin: String, weight: Double,
+                override var maxSpeed: Double) : Mammal(name, origin, weight) {
+    override fun breath() {
+        println("Breath through the trunk")
+    }
+
+    override fun run() {
+        println("Runs with four legs")
     }
 }
 

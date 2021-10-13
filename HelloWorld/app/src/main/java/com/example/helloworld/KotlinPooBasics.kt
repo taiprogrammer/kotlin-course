@@ -39,13 +39,14 @@ fun main() {
         val (id, name) = updateUser
     */
 
-    val myMotorcycle = Motorcycle("Fazer 250 ABS", "Yamaha")
+    val myMotorcycle = Motorcycle("Fazer 250 ABS", "Yamaha", 50.0)
     val myElectricMotorcycle = ElectricMotorcycle(myMotorcycle.nameMotorcycle, myMotorcycle.brand,
-        100.0)
+        100.0, 20.0)
 
     myMotorcycle.drive(500.0)
     myMotorcycle.showSpecs()
     myMotorcycle.extendRange(200.0)
+    myMotorcycle.brake()
     myElectricMotorcycle.showSpecs()
     myElectricMotorcycle.drive()
     //Polymorphism
@@ -145,13 +146,23 @@ data class User(val id : Long, val name : String)
 //}
 
 /* Sub class/Child class/ Derived class of Parent class Vehicle */
-open class Motorcycle(val nameMotorcycle : String, val brand : String) {
+open class Motorcycle(val nameMotorcycle : String, val brand : String,
+                      override val maxSpeed: Double) : Drivable {
     open var range : Double = 0.0
 
     fun extendRange(amount : Double) {
         if (amount > 0) {
             range += amount
         }
+    }
+
+    override fun drive(): String {
+        return "The motorcycle is driving by the interface implementation"
+    }
+
+    override fun brake() {
+        super.brake()
+        println("brake inside the motorcycle")
     }
 
     open fun drive(distance : Double) {
@@ -163,8 +174,10 @@ open class Motorcycle(val nameMotorcycle : String, val brand : String) {
     }
 }
 
-class ElectricMotorcycle(nameMotorcycle: String, brand: String, val batteryLife : Double)
-    : Motorcycle(nameMotorcycle, brand) {
+class ElectricMotorcycle(nameMotorcycle: String, brand: String, val batteryLife : Double,
+                         maxSpeed: Double
+)
+    : Motorcycle(nameMotorcycle, brand, maxSpeed) {
 
     override var range = batteryLife * 6
 
@@ -172,8 +185,9 @@ class ElectricMotorcycle(nameMotorcycle: String, brand: String, val batteryLife 
         println("Drove for $distance KM on electricity")
     }
 
-    fun drive() {
-        println("Drove for $range KM on electricity")
+
+    override fun drive() : String {
+        return "Drove for $range KM on electricity"
     }
 
     override fun showSpecs() {
@@ -181,4 +195,14 @@ class ElectricMotorcycle(nameMotorcycle: String, brand: String, val batteryLife 
         super.showSpecs()
         }
     }
+
+    /* Interfaces */
+
+interface Drivable {
+    val maxSpeed : Double
+    fun drive(): String
+    fun brake() {
+        println("The drivable is breaking")
+    }
+}
 

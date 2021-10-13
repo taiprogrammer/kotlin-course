@@ -38,6 +38,18 @@ fun main() {
     /*
         val (id, name) = updateUser
     */
+
+    val myMotorcycle = Motorcycle("Fazer 250 ABS", "Yamaha")
+    val myElectricMotorcycle = ElectricMotorcycle(myMotorcycle.nameMotorcycle, myMotorcycle.brand,
+        100.0)
+
+    myMotorcycle.drive(500.0)
+    myMotorcycle.showSpecs()
+    myMotorcycle.extendRange(200.0)
+    myElectricMotorcycle.showSpecs()
+    myElectricMotorcycle.drive()
+    //Polymorphism
+    myElectricMotorcycle.drive(500.0)
 }
 
 fun myFunction2(a : Int) {
@@ -124,4 +136,49 @@ class Car() {
 /* Creating a data class */
 /* Data class already have a toString() method */
 data class User(val id : Long, val name : String)
+
+/* Inheritance */
+/* Super class/Parent class/Base class */
+//open class Vehicle() {
+//    //properties
+//    //methods
+//}
+
+/* Sub class/Child class/ Derived class of Parent class Vehicle */
+open class Motorcycle(val nameMotorcycle : String, val brand : String) {
+    open var range : Double = 0.0
+
+    fun extendRange(amount : Double) {
+        if (amount > 0) {
+            range += amount
+        }
+    }
+
+    open fun drive(distance : Double) {
+        println("Drove for $distance KM")
+    }
+
+    open fun showSpecs() {
+        println("Name: $nameMotorcycle, Brand: $brand")
+    }
+}
+
+class ElectricMotorcycle(nameMotorcycle: String, brand: String, val batteryLife : Double)
+    : Motorcycle(nameMotorcycle, brand) {
+
+    override var range = batteryLife * 6
+
+    override fun drive(distance: Double) {
+        println("Drove for $distance KM on electricity")
+    }
+
+    fun drive() {
+        println("Drove for $range KM on electricity")
+    }
+
+    override fun showSpecs() {
+        println("Battery life: $batteryLife")
+        super.showSpecs()
+        }
+    }
 

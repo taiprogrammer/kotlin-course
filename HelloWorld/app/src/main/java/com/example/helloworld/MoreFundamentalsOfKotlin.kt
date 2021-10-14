@@ -39,3 +39,8 @@ package com.example.helloworld
 * - protected
 * - internal
 *  */
+
+fun main() {
+    val sum = {a : Int, b : Int -> a + b}
+    println(sum(5,20))
+}

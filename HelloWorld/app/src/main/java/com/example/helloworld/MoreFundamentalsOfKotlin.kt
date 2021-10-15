@@ -38,9 +38,110 @@ package com.example.helloworld
 * - private
 * - protected
 * - internal
+
+* Nested class and Inner class -> a class which is created inside another class and a class which
+* is created inside another class with keyword inner
+
+* Nested class -> is such class which is created inside another class
+* -> In Kotlin, a nested class is by default static, so its data members and member functions ban
+* be accessed without creating an object of the class
+* -> Nested classes cannot access the data members of outer classes
+
+* Example:
+    class OuterClass {
+        outer class code
+
+            class NestedClass {
+                nested class code
+            }
+    }
+
+*   class OuterClass {
+        private val name : String = "Mr X"
+        class NestedClass {
+            val description : String = "code in nested class"
+            private val id : Int = 101
+            fun foo() {
+                println("name is: $name") -> cannot access the outer class members
+                println("Id is: $id")
+            }
+        }
+*   }
+
+*   fun main() {
+        println(OuterClass.NestedClass().description) -> accessing property
+
+        val obj = OuterClass.NestedClass() -> Object created
+        obj.foo() -> access member function
+    }
+
+    Output: code inside nested class
+        Id is: 101
+
+* Inner class -> is a class which is created inside another class with keyword inner
+* -> In other words, we can say that a nested class which is marked as "inner" is called inner class
+* -> Inner class cannot be declared inside interfaces on non-inner nested class
+* -> The advantage of inner class over nested class is that, it is able to access members of its
+* outer class even if it is private
+* -> The inner class keeps a reference to an object of its outer class
+
+* Example
+*   class OuterClass {
+        outer class code
+
+        inner class InnerClass {
+            inner class code
+        }
+    }
+
+    class OuterClass {
+        private val name : String = "Mr X"
+
+        inner class InnerClass {
+            val description : String = "code inside inner class"
+            private val id : Int = 101
+            fun foo() {
+                println("name is: $name") -> access the private variable outer class member
+                println("Id is: $id")
+            }
+        }
+    }
 *  */
+
+class OuterClass {
+    private val name : String = "Vinicius"
+
+    class NestedClass {
+        val description : String = "code in nested class"
+        private val id : Int = 101
+        fun foo() {
+            println("Id is: $id")
+        }
+    }
+}
+
+class SecondOuterClass {
+    private val name : String = "Vinicius"
+
+    inner class InnerClass {
+        val description : String = "code in inner class"
+        private val id : Int = 101
+        fun foo() {
+            println("name is: $name")
+            println("id is: $id")
+        }
+    }
+}
 
 fun main() {
     val sum = {a : Int, b : Int -> a + b}
     println(sum(5,20))
+
+    println(OuterClass.NestedClass().description)
+    val obj = OuterClass.NestedClass()
+    obj.foo()
+
+    println(SecondOuterClass().InnerClass().description)
+    val objInner = SecondOuterClass().InnerClass()
+    objInner.foo()
 }

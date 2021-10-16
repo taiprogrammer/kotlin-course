@@ -106,10 +106,66 @@ package com.example.helloworld
             }
         }
     }
+
+* Unsafe and safe cast operator
+* Unsafe cast operator: as
+* -> Sometimes it is not possible to cast a variable and it throws an exception, this is called
+* an unsafe cast
+* -> The unsafe cast is performed bt the infix operator as
+* -> A nullable string (String?) cannot be cast to non nullable string (String), this throws
+* an exception
+
+* Example:
+    fun main() {
+        val obj : Any? = null
+        val st : String = obj as String
+        println(str)
+    }
+
+    Output: Exception ....
+
+* -> Trying to cast an integer value of Any type into a string type leads to a ClassCastException
+
+* Example:
+    val obj : Any = 123
+    val str : String = obj as String
+
+* -> Throws java.langClassCastException: java.lang.Integer cannot be cast to java.lang.String
+
+* -> Nullable for Casting to work:
+* -> source and target variable needs to be a nullable for casting to work:
+
+* Example:
+    fun main() {
+        val obj : Any? = "String unsafe casting"
+        val str : String? = obj as String? -> it works
+        println(str)
+    }
+
+    Output: String unsafe cast
+
+* Safe cast operator: as?
+* -> as? provides a safe cast operation to safely cast to a type
+* -> It returns a null if casting is not possible rather than throwing an ClassCastException
+* exception
+
+* Example:
+    fun main() {
+        val location : Any = "Kotlin"
+        val safeString : String? = location as? String
+        val safeInt : Int? = location as? Int
+        println(safeString)
+        println(safeInt)
+    }
+
+    Output: Kotlin
+            null
+
+
 *  */
 
 class OuterClass {
-    private val name : String = "Vinicius"
+    private val name : String = "Mr Franks"
 
     class NestedClass {
         val description : String = "code in nested class"
@@ -121,7 +177,7 @@ class OuterClass {
 }
 
 class SecondOuterClass {
-    private val name : String = "Vinicius"
+    private val name : String = "Mr Franks"
 
     inner class InnerClass {
         val description : String = "code in inner class"

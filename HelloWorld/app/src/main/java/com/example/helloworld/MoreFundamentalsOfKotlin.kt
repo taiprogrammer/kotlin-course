@@ -161,6 +161,19 @@ package com.example.helloworld
     Output: Kotlin
             null
 
+* Exception handling -> Handling runtime problems which occur in the program and would otherwise
+* lead to program termination
+
+* Throwable class
+* throw MyException("this throws an exception")
+
+* -> There as four different keywords used in exception handling:
+*   try: contains a set of statements which might generate an exception. It must be followed by
+* either catch or finally or both
+*   catch: is used to catch the exception thrown from the try block
+*   finally: always execute whether exception is handled or not. So it is used to execute important
+* code statement. (like closing buffers)
+*   throw: is used to throw an exception explicitly
 
 *  */
 
